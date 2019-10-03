@@ -1,24 +1,11 @@
-member.destroy_all
-specialist.destroy_all
-membership.destroy_all
-
-
-Members
-
-m1 = 
-m1 = 
+Member.destroy_all
+Specialist.destroy_all
+Session.destroy_all
 
 
 
 
-Specialists
+m1 = Member.create(name: "Patrick", email: "pat@pat.com", password: "patpat")
 
-#Add classes as a column to specialist when they are created?
-
-s1 = 
-s1 = 
-s1 = 
-s1 = 
-
-Memberships
+sp1 = Specialist.create(name: "Massage Master", specialty: "Massage Therapy")
 

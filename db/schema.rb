@@ -10,21 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_200225) do
+ActiveRecord::Schema.define(version: 2019_10_03_122104) do
 
   create_table "members", force: :cascade do |t|
     t.string "name"
+    t.string "email"
+    t.string "password"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "members"
+    t.string "specialists"
+    t.string "times"
   end
 
   create_table "specialists", force: :cascade do |t|
     t.string "name"
     t.string "specialty"
-  end
-
-  create_table "subscriptions", force: :cascade do |t|
-    t.string "members"
-    t.string "specialists"
-    t.string "points"
   end
 
 end
