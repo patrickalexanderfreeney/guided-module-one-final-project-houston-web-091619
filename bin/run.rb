@@ -1,4 +1,7 @@
 require_relative '../config/environment'
+
+# require '../model/specialist'
+
 $prompt = TTY::Prompt.new
 
 def space(num)
@@ -41,30 +44,38 @@ while member == nil
     end   
 end  
  
-while 
-    member_response = $prompt.select("What would you like to do?", %w(Schedule Classes))
+# while 
+#     member_response = $prompt.select("What would you like to do?", %w(Schedule Classes))
     
    
     
-    if member_response == "Schedule"
-        Specialist.specialists
-    end
+#     if member_response == "Schedule"
+#         Specialist.specialists
+#     end
 
-    if member_response = "Massage Master"
-        Session.create(member)
+#     if member_response == "Massage Master"
+#         Session.create(member)
+#     end
 
+# end
 
-    if member_response == exit
-        break
-    end
+while
+   member_response = $prompt.select("What would you like to do?", %w(Schedule_Session View_Sessions Purchase_Points Refer_a_friend))
+       case member_response
+       when "Schedule_Session"
+        puts Specialist.specialists
+       when View_Sessions
+         puts "The tank is almost empty. Quickly, find a gas station!"
+       when Purchase_Points
+         puts 'You should be ok for now.'
+       when Refer_a_friend
+         puts "The tank is almost full."
+       else
+         break if member_response == 'Quit'
+       end
+   # if member_response == exit
+   #     break
+   # end
 end
-
-
-# space(4)
-# puts "Wellr: For your wellness."
-# log_in_sign_up
-# main_menu
-
-
 
 

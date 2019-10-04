@@ -68,7 +68,7 @@ while
         Specialist.specialists
     end
 
-    if member_response = "Massage Master"
+    if member_response == "Massage Master"
         Session.create(member)
 
 
@@ -87,14 +87,8 @@ end
             Specialist.specialists
         end
     
-        if member_response = "Massage Master"
-            Session.create(member)
-    
-    
-        if member_response == exit
-            break
-        end
     end
+end
     
 
 
@@ -102,10 +96,11 @@ end
 
 
 
-log_in_sign_up
-main_menu
 
-# space(4)
-# puts "Wellr: For your wellness."
-# log_in_sign_up
-# main_menu
+
+
+
+
+
+
+
