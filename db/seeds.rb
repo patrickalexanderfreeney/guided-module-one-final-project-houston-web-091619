@@ -13,5 +13,6 @@ sp1 = Specialist.create(name: “Massage Master”, specialty: “Massage Therap
 sp2 = Specialist.create(name: “YogaMaste”, specialty: “Yoga”)
 sp3 = Specialist.create(name: “Meditate on that”, specialty: “Meditation”)
 sp4 = Specialist.create(name: “WalkOn”, specialty: “Speed walking coach”)
-sp5 = Specialist.create(name: “RunThat”, specialty: “Cross Country”)
+sp5 = Specialist.create(name: “RunThat”, specialty: “Cross Country”) 
+
 

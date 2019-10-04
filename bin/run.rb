@@ -15,7 +15,7 @@ member = nil
 
 while member == nil
     puts " Welcome to GroupFit "
-    space(3) 
+    space(2) 
 
     answer = $prompt.select( "Let's get started!" , %w(Log-In Sign-Up))
     
@@ -39,43 +39,45 @@ while member == nil
     if answer == "Log-In"
         member = Member.where({
             email: $prompt.ask("Email:"),
-            password: $prompt.mask("Enter Password:")
-        }).first
+            password: $prompt.mask("Enter Password:"),
+        }).first   
     end   
 end  
  
-# while 
-#     member_response = $prompt.select("What would you like to do?", %w(Schedule Classes))
-    
-   
-    
-#     if member_response == "Schedule"
-#         Specialist.specialists
+# loop do
+#     member_response = $prompt.select(“What would you like to do?“, %w(Schedule_Session View_Sessions Highest_Rated Exit))
+
+#     if member_response == “Schedule_Session”
+
+#         specialist_id = $prompt.select(“What would you like to do?“
+
+#         Session.create({
+#             member_id: member_id,
+#             specialist_id: specialist,
+#             time: time
+#         })
 #     end
-
-#     if member_response == "Massage Master"
-#         Session.create(member)
+#     if member_response ==“View_Sessions”
+#         scheduled_sessions 
 #     end
+#     if member_response ==“Highest_Rated”
+#     end
+#     # break if
+#  end
 
-# end
 
-while
-   member_response = $prompt.select("What would you like to do?", %w(Schedule_Session View_Sessions Purchase_Points Refer_a_friend))
-       case member_response
-       when "Schedule_Session"
-        puts Specialist.specialists
-       when View_Sessions
-         puts "The tank is almost empty. Quickly, find a gas station!"
-       when Purchase_Points
-         puts 'You should be ok for now.'
-       when Refer_a_friend
-         puts "The tank is almost full."
-       else
-         break if member_response == 'Quit'
-       end
-   # if member_response == exit
-   #     break
-   # end
+loop do
+    #  member_response = $prompt.select(“What would you like to do?“, %w(Schedule_Session View_Sessions Highest_Rated Exit))
+       if member_response == “Schedule_Session”
+           puts "scheduled_session"
+       elsif member_response == “View_Sessions”
+           puts "view_sessions"
+       elsif member_response == “Highest_Rated”
+           puts "highest_rated"
+       break if member_response == “Exit”
+    end
 end
+
+
 
 

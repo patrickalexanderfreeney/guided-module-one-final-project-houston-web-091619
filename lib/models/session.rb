@@ -3,11 +3,10 @@ belongs_to :member
 belongs_to :specialist
 
 
-# def self.sessions
-#     self.all.map do |i|
-#         i.name
-#     end
-#     Session.all.first.name
-# end
+def self.sessions
+    self.all.map do |i|
+        i.name
+    end
+end
 
 end 
