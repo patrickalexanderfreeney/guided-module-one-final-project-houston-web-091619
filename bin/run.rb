@@ -1,69 +1,78 @@
 require_relative '../config/environment'
 $prompt = TTY::Prompt.new
+def run
+    space(50)
+    welcome_in
+    space(10)
+    log_sign_up
+    space(10)
+    main_menu
+    space(10)
+end
 
-def space(num)
+def space(num=1)
     num.times do 
-        puts "
-     "
+        puts
     end
 end
 
-member = nil
+def welcome_in 
+    space(3)
+    puts "Welcome to GroupFit!"
+    space(3)
+end
 
-while member == nil
-    puts " Welcome to GroupFit "
-    space(3) 
 
-    answer = $prompt.select( "Let's get started!" , %w(Log-In Sign-Up))
+def log_sign_up
     
-    if answer == "Sign-Up"
-    name = $prompt.ask('Please enter your name (first and last)?') do |q|
-        q.validate(/\D\s/, 'Please include your name.')
-    end
-        
-    email = $prompt.ask('Please enter your email address?') do |q|
-        q.validate(/\A\w+@\w+\.\w+\Z/, 'Invalid email address')
-    end
+    i=0
+    
+    loop do
+        answer = $prompt.select("Please Log In or Sign Up to get started!" , %w(Log-In Sign-Up))
+        space(3)
 
-    password = $prompt.mask("Password")
-
-    member = Member.create({
-        name: name, 
-        email: email,
-        password: password})
-    end
-
-    if answer == "Log-In"
-        member = Member.where({
+        if answer == "Sign-Up"
+    
+            name = $prompt.ask('Please enter your name (first and last)?')
+            email = $prompt.ask('Please enter your email address?')
+            password = $prompt.mask("Password?")
+            # member = Member.create(name, email, password)
+            i+=1
+            
+        else
+            member = Member.where({
             email: $prompt.ask("Email:"),
             password: $prompt.mask("Enter Password:")
-        }).first
-    end   
-end  
- 
-while 
-    member_response = $prompt.select("What would you like to do?", %w(Schedule Classes))
-    
-   
-    
-    if member_response == "Schedule"
-        Specialist.specialists
-    end
-
-    if member_response = "Massage Master"
-        Session.create(member)
-
-
-    if member_response == exit
-        break
+            }).first
+            i+=1
+        end
+        break if i==1   
     end
 end
 
+def main_menu
+    loop do 
+        member_response = $prompt.select("What would you like to do?", %w(View_Sessions Most_Visited Exit))
 
-# space(4)
-# puts "Wellr: For your wellness."
-# log_in_sign_up
-# main_menu
+            if member_response == 'View_Sessions'
+                view_sessions
+            elsif member_response == 'Most_Visited'
+                most_visited
+            end
+        break if member_response == 'Exit'    
+    end
+end
+
+def most_visited 
+    p Specialist.most_sessions
+end
+
+def view_sessions 
+    p Specialist.names
+end
+
+
+
 
 
 
